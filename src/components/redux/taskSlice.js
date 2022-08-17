@@ -21,9 +21,26 @@ export const taskSlice = createSlice({
             return state.filter((item) => item.id !== action.payload.id);
         },
 
+
+        removeAllTodoTask: (state) => {
+            console.log(state);
+            return state.filter((removeAllTodoTask) => removeAllTodoTask.id == state);
+        },
+
+        // updateTask: (state, action) => {
+        //     console.log(action.payload.id);
+        //     console.log(state);
+        //     return state.filter((item) => item.id !== action.payload.id);
+        // }
+        updateTodoTask: (state, action) => {
+            console.log(nanoid());
+
+        },
+
+
     },
 });
 
-export const { addTask, deleteTask, } = taskSlice.actions;
+export const { addTask, deleteTask, removeAllTodoTask, updateTodoTask } = taskSlice.actions;
 
 export default taskSlice.reducer;
