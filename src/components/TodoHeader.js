@@ -9,6 +9,8 @@ import {
 import React, { useState } from "react";
 import { useDispatch } from "react-redux";
 import { addTask } from "../redux/taskSlice";
+import Icon from 'react-native-vector-icons/MaterialIcons';
+import { removeAllTodoTask } from "../redux/taskSlice";
 
 const TodoHeader = () => {
     const [todo, setTodo] = useState("");
@@ -28,6 +30,14 @@ const TodoHeader = () => {
         );
         setTodo("");
     };
+    const removeAll = () => {
+        dispatch(
+            removeAllTodoTask({
+                setTodo: "",
+            })
+        );
+    };
+
 
 
     return (
@@ -69,27 +79,37 @@ const TodoHeader = () => {
                         backgroundColor: "black",
                         padding: 10,
                         margin: 10,
-                        width: "90%",
+                        width: "50%",
                         borderRadius: 5,
                         alignItems: "center",
                     }}
                     onPress={onSubmitTask}
                 >
-                    <Text style={{ color: "white" }}>Add</Text>
+                    <Text style={{ color: "white" }}>ADD</Text>
                 </TouchableOpacity>
-                {/* <TouchableOpacity
-                    style={{
-                        backgroundColor: "black",
-                        padding: 10,
-                        margin: 10,
-                        width: "90%",
-                        borderRadius: 5,
-                        alignItems: "center",
-                    }}
-                    onPress={deleteAllTodos}
+
+                <TouchableOpacity style={{
+                    backgroundColor: "#e9e9e9",
+                    marginTop: 20,
+                    marginVertical: 8,
+                    marginHorizontal: 16,
+                    flexDirection: "row",
+                    justifyContent: "space-between",
+                    alignItems: "center",
+                    textAlign: 'center',
+                    width: "38%",
+                    borderRadius: 5,
+
+                }}
+
+                    onPress={removeAll}
                 >
-                    <Text style={{ color: "white" }}>Delete All Notes</Text>
-                </TouchableOpacity> */}
+                    <Text style={{
+                        textAlign: 'center',
+                        justifyContent: 'center', color: "#000000", fontWeight: "bold", fontSize: 20,
+                    }}> Delete All</Text>
+                    <Icon name="delete" size={20} color="red" />
+                </TouchableOpacity>
             </View>
         </View>
     );
